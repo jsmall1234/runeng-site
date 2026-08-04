@@ -85,26 +85,40 @@
 
   /* ---- title block ---- */
   .titleblock {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 0.35rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
     border: 1px solid var(--line);
     padding: 1.1rem 1.35rem;
     margin-bottom: 3.5rem;
     font-size: 0.78rem;
   }
-  .titleblock dt {
+  .titleblock-photo {
+    width: 72px;
+    height: 72px;
+    object-fit: cover;
+    border: 1px solid var(--line);
+    flex-shrink: 0;
+  }
+  .titleblock-meta {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.35rem 1.25rem;
+    flex: 1;
+    margin: 0;
+  }
+  .titleblock-meta dt {
     grid-column: 1;
     color: var(--ink-soft);
     text-transform: uppercase;
     letter-spacing: 0.08em;
   }
-  .titleblock dd {
+  .titleblock-meta dd {
     grid-column: 2;
     margin: 0;
     letter-spacing: 0.02em;
   }
-  .titleblock dt, .titleblock dd { padding: 0.15rem 0; }
+  .titleblock-meta dt, .titleblock-meta dd { padding: 0.15rem 0; }
 
   /* ---- hero ---- */
   h1 {
@@ -325,20 +339,24 @@
   }
 
   @media (max-width: 480px) {
-    .titleblock { grid-template-columns: 1fr; }
-    .titleblock dt { grid-column: 1; }
-    .titleblock dd { grid-column: 1; margin-bottom: 0.3rem; }
+    .titleblock { flex-direction: column; align-items: flex-start; }
+    .titleblock-meta { grid-template-columns: 1fr; }
+    .titleblock-meta dt { grid-column: 1; }
+    .titleblock-meta dd { grid-column: 1; margin-bottom: 0.3rem; }
   }
 </style>
 </head>
 <body>
 <div class="page">
 
-  <dl class="titleblock mono">
-    <dt>Prepared by</dt><dd>Jeffrey W. Small</dd>
-    <dt>Role</dt><dd>VP Engineering, Independent</dd>
-    <dt>Scope</dt><dd>Idea &rarr; Prototype Sprint</dd>
-  </dl>
+  <div class="titleblock">
+    <img class="titleblock-photo" src="jeff.jpg" alt="Jeffrey W. Small">
+    <dl class="titleblock-meta mono">
+      <dt>Prepared by</dt><dd>Jeffrey W. Small</dd>
+      <dt>Role</dt><dd>VP Engineering, Independent</dd>
+      <dt>Scope</dt><dd>Idea &rarr; Prototype Sprint</dd>
+    </dl>
+  </div>
 
   <h1>Turn your product idea into a working prototype without hiring a team first.</h1>
   <p class="lede">I'm a hands-on engineering leader who uses AI-accelerated development to take an idea from sketch to working software in weeks, not months. That means you can find out if it's worth building before you commit to a team, an agency, or a year of your life.</p>
